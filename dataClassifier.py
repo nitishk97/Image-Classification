@@ -1,7 +1,6 @@
 import naiveBayes
 import perceptron
 import kNearestNeighbors
-import mira
 import samples
 import sys
 import util
@@ -81,7 +80,7 @@ def readCommand( argv ):
   from optparse import OptionParser  
   parser = OptionParser(USAGE_STRING)
   
-  parser.add_option('-c', '--classifier', help=default('The type of classifier'), choices=['mostFrequent', 'nb', 'naiveBayes', 'perceptron', 'kNN', 'kNearestNeighbors', 'mira', 'minicontest'], default='mostFrequent')
+  parser.add_option('-c', '--classifier', help=default('The type of classifier'), choices=[ 'nb', 'naiveBayes', 'perceptron', 'kNN', 'kNearestNeighbors', 'minicontest'], default='naiveBayes')
   parser.add_option('-d', '--data', help=default('Dataset to use'), choices=['digits', 'faces'], default='digits')
   parser.add_option('-t', '--training', help=default('The size of the training set'), default=100, type="int")
   parser.add_option('-f', '--features', help=default('Whether to use enhanced features'), default=False, action="store_true")
@@ -159,13 +158,6 @@ def readCommand( argv ):
         print("using smoothing parameter k=%f for naivebayes" %  options.smoothing)
   elif(options.classifier == "perceptron"):
     classifier = perceptron.PerceptronClassifier(labels,options.iterations)
-  elif(options.classifier == "mira"):
-    classifier = mira.MiraClassifier(labels, options.iterations)
-    if (options.autotune):
-        print("using automatic tuning for MIRA")
-        classifier.automaticTuning = True
-    else:
-        print("using default C=0.001 for MIRA")
   elif(options.classifier == 'minicontest'):
     import minicontest
     classifier = minicontest.contestClassifier(labels)
@@ -184,7 +176,7 @@ def readCommand( argv ):
 USAGE_STRING = """
   USAGE:      python dataClassifier.py <options>
   EXAMPLES:   (1) python dataClassifier.py
-                  - trains the default mostFrequent classifier on the digit dataset
+                  - trains the default naiveBayes classifier on the digit dataset
                   using the default 100 training examples and
                   then test the classifier on test data
               (2) python dataClassifier.py -c naiveBayes -d digits -t 1000 -f -o -1 3 -2 6 -k 2.5
@@ -196,13 +188,9 @@ USAGE_STRING = """
                  """
 
 def runClassifier(args, options):
-  #print(options)
-
   featureFunction = args['featureFunction']
   classifier = args['classifier']
   printImage = args['printImage']
-      
-  # Load data  
   numTraining = options.training
   numTest = options.test
 
