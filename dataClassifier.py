@@ -1,14 +1,3 @@
-# dataClassifier.py
-# -----------------
-# Licensing Information: Please do not distribute or publish solutions to this
-# project. You are free to use and extend these projects for educational
-# purposes. The Pacman AI projects were developed at UC Berkeley, primarily by
-# John DeNero (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
-# For more info, see http://inst.eecs.berkeley.edu/~cs188/sp09/pacman.html
-
-# This file contains feature extraction methods and harness 
-# code for data classification
-
 import mostFrequent
 import naiveBayes
 import perceptron
@@ -27,10 +16,6 @@ FACE_DATUM_HEIGHT=70
 
 
 def basicFeatureExtractorDigit(datum):
-  """
-  Returns a set of pixel features indicating whether
-  each pixel in the provided datum is white (0) or gray/black (1)
-  """
   a = datum.getPixels()
 
   features = util.Counter()
