@@ -28,10 +28,6 @@ def basicFeatureExtractorDigit(datum):
   return features
 
 def basicFeatureExtractorFace(datum):
-  """
-  Returns a set of pixel features indicating whether
-  each pixel in the provided datum is an edge (1) or no edge (0)
-  """
   a = datum.getPixels()
 
   features = util.Counter()
@@ -44,77 +40,24 @@ def basicFeatureExtractorFace(datum):
   return features
 
 def enhancedFeatureExtractorDigit(datum):
-  """
-  Your feature extraction playground.
-  
-  You should return a util.Counter() of features
-  for this datum (datum is of type samples.Datum).
-  
-  ## DESCRIBE YOUR ENHANCED FEATURES HERE...
-  
-  ##
-  """
   features =  basicFeatureExtractorDigit(datum)
-
-  "*** YOUR CODE HERE ***"
-  
   return features
 
 
 def contestFeatureExtractorDigit(datum):
-  """
-  Specify features to use for the minicontest
-  """
   features =  basicFeatureExtractorDigit(datum)
   return features
 
 def enhancedFeatureExtractorFace(datum):
-  """
-  Your feature extraction playground for faces.
-  It is your choice to modify this.
-  """
   features =  basicFeatureExtractorFace(datum)
   return features
 
 def analysis(classifier, guesses, testLabels, testData, rawTestData, printImage):
-  """
-  This function is called after learning.
-  Include any code that you want here to help you analyze your results.
-  
-  Use the printImage(<list of pixels>) function to visualize features.
-  
-  An example of use has been given to you.
-  
-  - classifier is the trained classifier
-  - guesses is the list of labels predicted by your classifier on the test set
-  - testLabels is the list of true labels
-  - testData is the list of training datapoints (as util.Counter of features)
-  - rawTestData is the list of training datapoints (as samples.Datum)
-  - printImage is a method to visualize the features 
-  (see its use in the odds ratio part in runClassifier method)
-  
-  This code won't be evaluated. It is for your own optional use
-  (and you can modify the signature if you want).
-  """
-  
-  # Put any code here...
-  # Example of use:
   for i in range(len(guesses)):
       prediction = guesses[i]
       truth = testLabels[i]
       if (prediction != truth):
-          # print("===================================")
-          # print("Mistake on example %d" % i) 
-          # print("Predicted %d; truth is %d" % (prediction, truth))
-          # print("Image: ")
-          # print(rawTestData[i])
           break
-
-
-## =====================
-## You don't have to modify any code below.
-## =====================
-
 
 class ImagePrinter:
     def __init__(self, width, height):
@@ -122,21 +65,9 @@ class ImagePrinter:
       self.height = height
 
     def printImage(self, pixels):
-      """
-      Prints a Datum object that contains all pixels in the 
-      provided list of pixels.  This will serve as a helper function
-      to the analysis function you write.
-      
-      Pixels should take the form 
-      [(2,2), (2, 3), ...] 
-      where each tuple represents a pixel.
-      """
       image = samples.Datum(None,self.width,self.height)
       for pix in pixels:
         try:
-            # This is so that new features that you could define which 
-            # which are not of the form of (x,y) will not break
-            # this image printer...
             x,y = pix
             image.pixels[x][y] = 2
         except:
@@ -169,7 +100,6 @@ def readCommand( argv ):
   if len(otherjunk) != 0: raise Exception('Command line input not understood: ' + str(otherjunk))
   args = {}
   
-  # Set up variables according to the command line input.
   print("Doing classification")
   print("--------------------")
   print("data:\t\t" + options.data)
@@ -269,8 +199,6 @@ USAGE_STRING = """
                   with label1=3 vs. label2=6
                  """
 
-# Main harness code
-
 def runClassifier(args, options):
   #print(options)
 
@@ -294,13 +222,10 @@ def runClassifier(args, options):
     testLabels = samples.loadLabelsFile("digitdata/testlabels", chosenList)
     
   
-  # Extract features
   print("Extracting features...")
   trainingData = list(map(featureFunction, rawTrainingData))
-  # validationData = list(map(featureFunction, rawValidationData))
   testData = list(map(featureFunction, rawTestData))
   
-  # Conduct training and testing
   print("Training...")
   validationData, validationLabels = [0], [0]
   start_time = time.time()
@@ -308,7 +233,6 @@ def runClassifier(args, options):
   train_time = time.time() - start_time
   print(train_time, end='')
   print (" (training time)")
-  #exit()
   print("Testing...")
   guesses = classifier.classify(testData)
   correct = [guesses[i] == testLabels[i] for i in range(len(testLabels))].count(True)
@@ -316,7 +240,6 @@ def runClassifier(args, options):
   print("")
   analysis(classifier, guesses, testLabels, testData, rawTestData, printImage)
   
-  # do odds ratio computation if specified at command line
   if((options.odds) & (options.classifier == "naiveBayes" or (options.classifier == "nb")) ):
     label1, label2 = options.label1, options.label2
     features_odds = classifier.findHighOddsFeatures(label1,label2)
