@@ -31,7 +31,7 @@ class NaiveBayesClassifier(classificationMethod.ClassificationMethod):
     return self.count_labels[label] - self.featureCounts[label][feature]
       
   def trainAndTune(self, trainingData, trainingLabels, validationData, validationLabels, kgrid):
-    self.count_labels = [0 for x in self.legalLabels]
+    self.count_labels = [0 for x in self.labels]
 
     self.featureCounts = {}
     for label in self.labels:
