@@ -79,7 +79,6 @@ def default(str):
   return str + ' [Default: %default]'
 
 def readCommand( argv ):
-  "Processes the command used to run from the command line."
   from optparse import OptionParser  
   parser = OptionParser(USAGE_STRING)
   
