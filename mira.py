@@ -20,19 +20,19 @@ class MiraClassifier:
   Note that the variable 'datum' in this code refers to a counter of features
   (not to a raw samples.Datum).
   """
-  def __init__( self, legalLabels, max_iterations):
-    self.legalLabels = legalLabels
+  def __init__( self, labels, max_iterations):
+    self.labels = labels
     self.type = "mira"
     self.automaticTuning = False 
     self.C = 0.001
-    self.legalLabels = legalLabels
+    self.labels = labels
     self.max_iterations = max_iterations
     self.initializeWeightsToZero()
 
   def initializeWeightsToZero(self):
     "Resets the weights of each label to zero vectors" 
     self.weights = {}
-    for label in self.legalLabels:
+    for label in self.labels:
       self.weights[label] = util.Counter() # this is the data-structure you should use
   
   def train(self, trainingData, trainingLabels, validationData, validationLabels):
@@ -70,7 +70,7 @@ class MiraClassifier:
     guesses = []
     for datum in data:
       vectors = util.Counter()
-      for l in self.legalLabels:
+      for l in self.labels:
         vectors[l] = self.weights[l] * datum
       guesses.append(vectors.argMax())
     return guesses

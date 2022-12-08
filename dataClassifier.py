@@ -214,9 +214,9 @@ def readCommand( argv ):
     sys.exit(2)
     
   if(options.data=="digits"):
-    legalLabels = list(range(10))
+    labels = list(range(10))
   else:
-    legalLabels = list(range(2))
+    labels = list(range(2))
     
   if options.training <= 0:
     print("Training set size should be a positive integer (you provided: %d)" % options.training)
@@ -229,17 +229,17 @@ def readCommand( argv ):
     sys.exit(2)
     
   if options.odds:
-    if options.label1 not in legalLabels or options.label2 not in legalLabels:
+    if options.label1 not in labels or options.label2 not in labels:
       print("Didn't provide a legal labels for the odds ratio: (%d,%d)" % (options.label1, options.label2))
       print(USAGE_STRING)
       sys.exit(2)
 
   if(options.classifier == "mostFrequent"):
-    classifier = mostFrequent.MostFrequentClassifier(legalLabels)
+    classifier = mostFrequent.MostFrequentClassifier(labels)
   elif(options.classifier == "kNN" or options.classifier == "kNearestNeighbors"):
-    classifier = kNearestNeighbors.kNearestNeighborsClassifier(legalLabels)
+    classifier = kNearestNeighbors.kNearestNeighborsClassifier(labels)
   elif(options.classifier == "naiveBayes" or options.classifier == "nb"):
-    classifier = naiveBayes.NaiveBayesClassifier(legalLabels)
+    classifier = naiveBayes.NaiveBayesClassifier(labels)
     classifier.setSmoothing(options.smoothing)
     if (options.autotune):
         print("using automatic tuning for naivebayes")
@@ -247,9 +247,9 @@ def readCommand( argv ):
     else:
         print("using smoothing parameter k=%f for naivebayes" %  options.smoothing)
   elif(options.classifier == "perceptron"):
-    classifier = perceptron.PerceptronClassifier(legalLabels,options.iterations)
+    classifier = perceptron.PerceptronClassifier(labels,options.iterations)
   elif(options.classifier == "mira"):
-    classifier = mira.MiraClassifier(legalLabels, options.iterations)
+    classifier = mira.MiraClassifier(labels, options.iterations)
     if (options.autotune):
         print("using automatic tuning for MIRA")
         classifier.automaticTuning = True
@@ -257,7 +257,7 @@ def readCommand( argv ):
         print("using default C=0.001 for MIRA")
   elif(options.classifier == 'minicontest'):
     import minicontest
-    classifier = minicontest.contestClassifier(legalLabels)
+    classifier = minicontest.contestClassifier(labels)
   else:
     print("Unknown classifier:", options.classifier)
     print(USAGE_STRING)
@@ -344,7 +344,7 @@ def runClassifier(args, options):
     printImage(features_odds)
 
   if((options.weights) & (options.classifier == "perceptron")):
-    for l in classifier.legalLabels:
+    for l in classifier.labels:
       features_weights = classifier.findHighWeightFeatures(l)
       print(("=== Features with high weight for label %d ==="%l))
       printImage(features_weights)
