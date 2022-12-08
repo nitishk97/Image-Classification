@@ -17,7 +17,7 @@ class MostFrequentClassifier(classificationMethod.ClassificationMethod):
   every test instance presented to it, the classifier returns
   the label that was seen most often in the training data.
   """
-  def __init__(self, legalLabels):
+  def __init__(self, labels):
     self.guess = None
     self.type = "mostfrequent"
   

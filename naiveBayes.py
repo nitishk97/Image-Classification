@@ -17,12 +17,12 @@ class NaiveBayesClassifier(classificationMethod.ClassificationMethod):
   Note that the variable 'datum' in this code refers to a counter of features
   (not to a raw samples.Datum).
   """
-  def __init__(self, legalLabels):
-    self.legalLabels = legalLabels
+  def __init__(self, labels):
+    self.labels = labels
     self.type = "naivebayes"
     self.k = 1 # this is the smoothing parameter, ** use it in your train method **
     self.automaticTuning = False # Look at this flag to decide whether to choose k automatically ** use this in your train method **
-    print("Legal Labels:", self.legalLabels)
+    print("Legal Labels:", self.labels)
     
   def setSmoothing(self, k):
     """
@@ -64,7 +64,7 @@ class NaiveBayesClassifier(classificationMethod.ClassificationMethod):
     label lists contain the correct label for each datum.
     
     To get the list of all possible features or labels, use self.features and 
-    self.legalLabels.
+    self.labels.
     """
 
     "*** YOUR CODE HERE ***"
@@ -74,10 +74,10 @@ class NaiveBayesClassifier(classificationMethod.ClassificationMethod):
     #   self.dataCount
 
     #Use this var to get P(label)
-    self.count_labels = [0 for x in self.legalLabels]
+    self.count_labels = [0 for x in self.labels]
 
     self.featureCounts = {}
-    for label in self.legalLabels:
+    for label in self.labels:
       self.featureCounts[label] = util.Counter() # this is the data-structure you should use
 
     counter = 0
@@ -111,7 +111,7 @@ class NaiveBayesClassifier(classificationMethod.ClassificationMethod):
     logJoint[3] = <Estimate of log( P(Label = 3, datum) )>
     
     To get the list of all possible features or labels, use self.features and 
-    self.legalLabels.
+    self.labels.
     """
     logJoint = util.Counter()
     
@@ -119,7 +119,7 @@ class NaiveBayesClassifier(classificationMethod.ClassificationMethod):
     #getFeatureCountFalse(feature, label)
 
     "*** YOUR CODE HERE ***"
-    for label in self.legalLabels:
+    for label in self.labels:
       priorProb_Labels = math.log(self.count_labels[label] / self.dataCount)
 
       featureProb_givenLabel = 0

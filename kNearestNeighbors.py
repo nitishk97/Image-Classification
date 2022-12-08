@@ -23,16 +23,16 @@ class kNearestNeighborsClassifier:
   Note that the variable 'datum' in this code refers to a counter of features
   (not to a raw samples.Datum).
   """
-  def __init__( self, legalLabels, k=10):
-    self.legalLabels = legalLabels
+  def __init__( self, labels, k=10):
+    self.labels = labels
     self.type = "kNN"
     self.k = k
     self.weights = {}
-  #   for label in legalLabels:
+  #   for label in labels:
   #     self.weights[label] = util.Counter() # this is the data-structure you should use
 
   # def setWeights(self, weights):
-  #   assert len(weights) == len(self.legalLabels);
+  #   assert len(weights) == len(self.labels);
   #   self.weights == weights;
       
   def train( self, trainingData, trainingLabels, validationData, validationLabels ):
@@ -55,7 +55,7 @@ class kNearestNeighborsClassifier:
     DATA_HEIGHT, DATA_WIDTH = 0,0
     BLOCK_HEIGHT, BLOCK_WIDTH = 0,0
     BLOCK_ROWS, BLOCK_COLS = 0,0
-    if 2 in self.legalLabels:
+    if 2 in self.labels:
       DATA_HEIGHT, DATA_WIDTH = 28,28
       BLOCK_HEIGHT, BLOCK_WIDTH = 4,4
       BLOCK_ROWS, BLOCK_COLS = 7,7

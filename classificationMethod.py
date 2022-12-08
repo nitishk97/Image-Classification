@@ -20,12 +20,12 @@ class ClassificationMethod:
   all of your implementation code in the files for the individual
   classification methods listed above.
   """
-  def __init__(self, legalLabels):
+  def __init__(self, labels):
     """
     For digits dataset, the set of legal labels will be 0,1,..,9
     For faces dataset, the set of legal labels will be 0 (non-face) or 1 (face)
     """
-    self.legalLabels = legalLabels
+    self.labels = labels
     
     
   def train(self, trainingData, trainingLabels, validationData, validationLabels):
