@@ -1,0 +1,81 @@
+Doing classification
+--------------------
+data:		faces
+classifier:		naiveBayes
+using enhanced features?:	False
+training set size:	45
+Legal Labels: [0, 1]
+using smoothing parameter k=1.000000 for naivebayes
+Extracting features...
+Training...
+0.10184288024902344 (training time)
+Testing...
+118 correct out of 150 (78.7%).
+
+Doing classification
+--------------------
+data:		digits
+classifier:		naiveBayes
+using enhanced features?:	False
+training set size:	500
+Legal Labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+using smoothing parameter k=0.001000 for naivebayes
+Extracting features...
+Training...
+0.22107410430908203 (training time)
+Testing...
+744 correct out of 1000 (74.4%).
+
+Doing classification
+--------------------
+data:		faces
+classifier:		perceptron
+using enhanced features?:	False
+training set size:	45
+Extracting features...
+Training...
+Starting iteration 0...
+Starting iteration 1...
+0.3986480236053467 (training time)
+Testing...
+92 correct out of 150 (61.3%).
+
+Doing classification
+--------------------
+data:		digits
+classifier:		perceptron
+using enhanced features?:	False
+training set size:	500
+Extracting features...
+Training...
+Starting iteration 0...
+Starting iteration 1...
+Starting iteration 2...
+4.978290796279907 (training time)
+Testing...
+638 correct out of 1000 (63.8%).
+
+Doing classification
+--------------------
+data:		faces
+classifier:		kNN
+using enhanced features?:	False
+training set size:	45
+Extracting features...
+Training...
+0.028727054595947266 (training time)
+Testing...
+104 correct out of 150 (69.3%).
+
+Doing classification
+--------------------
+data:		digits
+classifier:		kNN
+using enhanced features?:	False
+training set size:	500
+Extracting features...
+Training...
+0.09760618209838867 (training time)
+Testing...
+622 correct out of 1000 (62.2%).
+
