@@ -1,4 +1,3 @@
-import mostFrequent
 import naiveBayes
 import perceptron
 import kNearestNeighbors
@@ -148,9 +147,7 @@ def readCommand( argv ):
       print(USAGE_STRING)
       sys.exit(2)
 
-  if(options.classifier == "mostFrequent"):
-    classifier = mostFrequent.MostFrequentClassifier(labels)
-  elif(options.classifier == "kNN" or options.classifier == "kNearestNeighbors"):
+  if(options.classifier == "kNN" or options.classifier == "kNearestNeighbors"):
     classifier = kNearestNeighbors.kNearestNeighborsClassifier(labels)
   elif(options.classifier == "naiveBayes" or options.classifier == "nb"):
     classifier = naiveBayes.NaiveBayesClassifier(labels)
