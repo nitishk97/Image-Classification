@@ -1,6 +1,6 @@
 import naiveBayes
 import perceptron
-import kNearestNeighbors
+import KNN
 import samples
 import sys
 import util
@@ -147,7 +147,7 @@ def readCommand( argv ):
       sys.exit(2)
 
   if(options.classifier == "kNN" or options.classifier == "kNearestNeighbors"):
-    classifier = kNearestNeighbors.kNearestNeighborsClassifier(labels)
+    classifier = KNN.KNNClassifier(labels)
   elif(options.classifier == "naiveBayes" or options.classifier == "nb"):
     classifier = naiveBayes.NaiveBayesClassifier(labels)
     classifier.setSmoothing(options.smoothing)
