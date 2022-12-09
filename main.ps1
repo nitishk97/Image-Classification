@@ -1,5 +1,5 @@
-"foo" >> PRESENTATIONresults.txt
-rm PRESENTATIONresults.txt
+"foo" >> results.txt
+rm results.txt
 
 #Append values to the face and digit arrays to see how the
 #algorithms perform with larger percentages of training data.
@@ -31,7 +31,7 @@ if($runNaiveBayes)
         For ($i=0; $i -lt $iterations; $i++)
         {
             "Running naiveBayes Faces: " + $amount
-            python dataClassifier.py -c naiveBayes -d faces -t $amount -s 150 >> PRESENTATIONresults.txt
+            python dataClassifier.py -c naiveBayes -d faces -t $amount -s 150 >> results.txt
         }
         $end_faces = Get-Date
         Write-host (New-TimeSpan -Start $start_faces -End $end_faces).TotalSeconds "seconds"
@@ -43,7 +43,7 @@ if($runNaiveBayes)
         For ($i=0; $i -lt $iterations; $i++)
         {
             "Running naiveBayes Digits: " + $amount
-            python dataClassifier.py -c naiveBayes -d digits -t $amount -s 1000 -k .001 >> PRESENTATIONresults.txt
+            python dataClassifier.py -c naiveBayes -d digits -t $amount -s 1000 -k .001 >> results.txt
         }
         $end_digits = Get-Date
         Write-host (New-TimeSpan -Start $start_digits -End $end_digits).TotalSeconds "seconds"
@@ -60,7 +60,7 @@ if($runPerceptron)
         For ($i=0; $i -lt $iterations; $i++)
         {
             "Running Perceptron Faces: " + $amount
-            python dataClassifier.py -c perceptron -d faces -t $amount -i 2 -s 150 >> PRESENTATIONresults.txt
+            python dataClassifier.py -c perceptron -d faces -t $amount -i 2 -s 150 >> results.txt
         }
         $end_faces = Get-Date
         Write-host (New-TimeSpan -Start $start_faces -End $end_faces).TotalSeconds "seconds"
@@ -72,7 +72,7 @@ if($runPerceptron)
         For ($i=0; $i -lt $iterations; $i++)
         {
             "Running Perceptron Digits: " + $amount
-            python dataClassifier.py -c perceptron -d digits -t $amount -i 3 -s 1000 >> PRESENTATIONresults.txt
+            python dataClassifier.py -c perceptron -d digits -t $amount -i 3 -s 1000 >> results.txt
         }
         $end_digits = Get-Date
         Write-host (New-TimeSpan -Start $start_digits -End $end_digits).TotalSeconds "seconds"
@@ -89,7 +89,7 @@ if($runkNearestNeighbor)
         For ($i=0; $i -lt $iterations; $i++)
         {
             "Running k Nearest Neighbor Faces: " + $amount
-            python dataClassifier.py -c kNN -d faces -t $amount -s 150 >> PRESENTATIONresults.txt
+            python dataClassifier.py -c kNN -d faces -t $amount -s 150 >> results.txt
         }
         $end_faces = Get-Date
         Write-host (New-TimeSpan -Start $start_faces -End $end_faces).TotalSeconds "seconds"
@@ -101,7 +101,7 @@ if($runkNearestNeighbor)
         For ($i=0; $i -lt $iterations; $i++)
         {
             "Running k Nearest Neighbor Digits: " + $amount
-            python dataClassifier.py -c kNN -d digits -t $amount -s 1000 >> PRESENTATIONresults.txt
+            python dataClassifier.py -c kNN -d digits -t $amount -s 1000 >> results.txt
         }
         $end_digits = Get-Date
         Write-host (New-TimeSpan -Start $start_digits -End $end_digits).TotalSeconds "seconds"
