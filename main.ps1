@@ -1,10 +1,6 @@
 "foo" >> results.txt
 rm results.txt
 
-#Append values to the face and digit arrays to see how the
-#algorithms perform with larger percentages of training data.
-#Only using 10% of each data set to make it quick.
-#You can also choose how many iterations of each to run.
 #Note: The values for 10%-100% of training data for Faces are as follows:
 #45,90,135,180,225,270,315,360,405,451
 #For digits:
@@ -17,8 +13,6 @@ $iterations = 1
 $runNaiveBayes = $true
 $runPerceptron = $true
 $runkNearestNeighbor = $true
-
-# Used to globally track how much time has passed
 $start_time = Get-Date
 
 #-----------------------------------------------------NAIVE BAYES-----------------------------------------------------------

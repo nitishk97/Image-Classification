@@ -99,8 +99,8 @@ def readCommand( argv ):
   
   print("Doing classification")
   print("--------------------")
-  print("data:\t\t" + options.data)
   print("classifier:\t\t" + options.classifier)
+  print("data:\t\t" + options.data)
   if not options.classifier == 'minicontest':
     print("using enhanced features?:\t" + str(options.features))
   else:
