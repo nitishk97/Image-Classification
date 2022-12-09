@@ -1,49 +1,49 @@
 Doing classification
 --------------------
-data:		faces
 classifier:		naiveBayes
+data:		faces
 using enhanced features?:	False
 training set size:	45
 Legal Labels: [0, 1]
 using smoothing parameter k=1.000000 for naivebayes
 Extracting features...
 Training...
-0.09988808631896973 (training time)
+0.0992269515991211 (training time)
 Testing...
-107 correct out of 150 (71.3%).
+115 correct out of 150 (76.7%).
 
 Doing classification
 --------------------
-data:		digits
 classifier:		naiveBayes
+data:		digits
 using enhanced features?:	False
 training set size:	500
 Legal Labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 using smoothing parameter k=0.001000 for naivebayes
 Extracting features...
 Training...
-0.21949005126953125 (training time)
+0.2229478359222412 (training time)
 Testing...
-773 correct out of 1000 (77.3%).
+760 correct out of 1000 (76.0%).
 
 Doing classification
 --------------------
-data:		faces
 classifier:		perceptron
+data:		faces
 using enhanced features?:	False
 training set size:	45
 Extracting features...
 Training...
 Starting iteration 0...
 Starting iteration 1...
-0.40496015548706055 (training time)
+0.39308786392211914 (training time)
 Testing...
-114 correct out of 150 (76.0%).
+117 correct out of 150 (78.0%).
 
 Doing classification
 --------------------
-data:		digits
 classifier:		perceptron
+data:		digits
 using enhanced features?:	False
 training set size:	500
 Extracting features...
@@ -51,31 +51,31 @@ Training...
 Starting iteration 0...
 Starting iteration 1...
 Starting iteration 2...
-5.084923982620239 (training time)
+5.178074836730957 (training time)
 Testing...
-722 correct out of 1000 (72.2%).
+757 correct out of 1000 (75.7%).
 
 Doing classification
 --------------------
-data:		faces
 classifier:		kNN
+data:		faces
 using enhanced features?:	False
 training set size:	45
 Extracting features...
 Training...
-0.02982020378112793 (training time)
+0.02981090545654297 (training time)
 Testing...
-92 correct out of 150 (61.3%).
+109 correct out of 150 (72.7%).
 
 Doing classification
 --------------------
-data:		digits
 classifier:		kNN
+data:		digits
 using enhanced features?:	False
 training set size:	500
 Extracting features...
 Training...
-0.09359312057495117 (training time)
+0.09303808212280273 (training time)
 Testing...
-614 correct out of 1000 (61.4%).
+618 correct out of 1000 (61.8%).
 
